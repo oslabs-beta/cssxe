@@ -15,7 +15,8 @@ function RulesUserAgentComp() {
         for (let style in stylesObj) {
             arr.push({
                 name: style,
-                value: stylesObj[style]
+                value: stylesObj[style].val,
+                isActive: stylesObj[style].isActive
             })
         }
         return arr;
@@ -44,13 +45,23 @@ function RulesUserAgentComp() {
 
             // add all longhand properties
             for (let cssProperty of style.rule.style.cssProperties) {
-                if (cssProperty.value) userAgentRules[cssProperty.name] = cssProperty.value;
+                if (cssProperty.value) {
+                    userAgentRules[cssProperty.name] = {
+                        val: cssProperty.value,
+                        isActive: cssProperty.isActive
+                    }
+                }
             }
             const shorthandStyles = style.rule.style.shorthandEntries;
             if (shorthandStyles.length) {
                 for (let shortStyle of shorthandStyles) {
                     // add all shorthand properties
-                    if (shortStyle.value) userAgentRules[shortStyle.name] = shortStyle.value;
+                    if (shortStyle.value) {
+                        userAgentRules[shortStyle.name] = {
+                            val: shortStyle.value,
+                            isActive: shortStyle.isActive
+                        }
+                    }
                     // get and remove longhand properties corresponding to each shorthand
                     removeDuplicates(longhandGetter, shortStyle.name, shortStyle.value, userAgentRules);
                 }

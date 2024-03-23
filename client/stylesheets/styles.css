@@ -90,9 +90,13 @@ body {
 }
 
 .style-property-span {
-  padding-left: 15px;
+    padding-left: 15px;
 }
 
 .style-property-span, .style-value-span {
   font-size: 14px;
+}
+
+.overwritten {
+  text-decoration: line-through white;
 }

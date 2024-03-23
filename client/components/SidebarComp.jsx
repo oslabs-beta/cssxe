@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RulesAllComp from "./RulesAllComp.jsx";
 
-
 function SidebarComp() {
   // local state variable for toggling the sidebar
   const [isCollapsed, setIsCollapsed] = useState(false);

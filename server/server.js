@@ -34,7 +34,7 @@ app.post('/cdp', async (req, res) => {
     console.log('server: /cdp: cdpProcess about to start');
     const result = await cdpProcess(data);
     console.log('server: /cdp: result should be returning now');
-// console.log('server: cdp: result:', result);
+    // console.log('server: cdp: result:', result);
     return res.json( result );
   } catch (error) {
     console.error('Error processing data:', error);
